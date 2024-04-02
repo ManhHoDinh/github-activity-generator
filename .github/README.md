@@ -9,15 +9,16 @@ for the last year.
 ### After :muscle: :relieved: :heart: :sunglasses: :metal: :horse: :wink: :fire: :dancer: :santa: :fireworks: :cherries: :tada:
 ![After](after.png)
 
-## How to use
-1. Create an empty GitHub repository. Do not initialize it.
-2. Download [the contribute.py script](https://github.com/Shpota/github-activity-generator/archive/master.zip) 
-and execute it passing the link on the created repository
+## How to use 
+1. Create git-test.py in main repository
+2. Copy [the contribute.py script](https://github.com/ManhHoDinh/github-activity-generator/blob/main/contribute.py) 
+to git-test.py
+3. Execute below command:  
 ```sh
-python contribute.py --repository=git@github.com:user/repo.git
+python git-test.py --days_before=7 --days_after=0 -mc=1 
 ```
 Now you have a repository with lots of changes in your GitHub account.
-Note: it takes several minutes for GitHub to reindex your activity.
+Note: This command mean: generate commit in last week ( 7 day ago to present (0 day)) and (mc=1 mean 1 commit per day)
 
 ## How it works
 The script initializes an empty git repository, creates a text file and starts 
