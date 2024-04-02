@@ -29,8 +29,7 @@ def main(def_args=sys.argv[1:]):
         sys.exit('days_after must not be negative')
     os.mkdir(directory)
     os.chdir(directory)
-    run(['git', 'init', '-b', 'main'])
-
+    
     if user_name is not None:
         run(['git', 'config', 'user.name', user_name])
 
@@ -59,7 +58,8 @@ def contribute(date):
     with open(os.path.join(os.getcwd(), 'README.md'), 'a') as file:
         file.write(message(date) + '\n\n')
     run(['git', 'add', '.'])
-    run(['git', 'commit', '-m', '"%s"' % message(date),
+    messageCommit = input(date.strftime('Commit message at %d -%m -%Y %H:%M :'))
+    run(['git', 'commit', '-m', '"%s"' % messageCommit,
          '--date', date.strftime('"%Y-%m-%d %H:%M:%S"')])
 
 
@@ -68,6 +68,7 @@ def run(commands):
 
 
 def message(date):
+    
     return date.strftime('Contribution: %Y-%m-%d %H:%M')
 
 
@@ -77,6 +78,8 @@ def contributions_per_day(args):
         max_c = 20
     if max_c < 1:
         max_c = 1
+    ##fixed to 5 commits per day
+    max_c = 5
     return randint(1, max_c)
 
 
